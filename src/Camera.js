@@ -14,9 +14,12 @@ import {
   View,
   Text,
   UIManager,
+  Dimensions,
 } from 'react-native';
-
+import BarcodeFinderMask from './BarcodeFinderMask';
 import { requestPermissions } from './handlePermissions';
+
+const { height, width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   base: {},
@@ -125,6 +128,9 @@ export default class Camera extends Component {
     permissionDialogMessage: PropTypes.string,
     notAuthorizedView: PropTypes.element,
     pendingAuthorizationView: PropTypes.element,
+    barcodeFinderVisible: PropTypes.bool,
+    barcodeFinderWidth: PropTypes.number,
+    barcodeFinderHeight: PropTypes.number,
   };
 
   static defaultProps = {
@@ -147,6 +153,10 @@ export default class Camera extends Component {
     barCodeTypes: Object.values(CameraManager.BarCodeType),
     permissionDialogTitle: '',
     permissionDialogMessage: '',
+    barcodeFinderVisible: false,
+    barcodeFinderWidth: 200,
+    barcodeFinderHeight: 200,
+    barcodeFinderComponent: <BarcodeFinderMask />,
     notAuthorizedView: (
       <View style={styles.authorizationContainer}>
         <Text style={styles.notAuthorizedText}>Camera not authorized</Text>
@@ -271,14 +281,31 @@ export default class Camera extends Component {
     }
   };
 
+  _child() {
+    var props = {
+      width: this.props.barcodeFinderWidth,
+      height: this.props.barcodeFinderHeight
+    }
+    return React.cloneElement(this.props.barcodeFinderComponent, props);
+  }
+
   render() {
-    // TODO - style is not used, figure it out why
-    // eslint-disable-next-line
-    const style = [styles.base, this.props.style];
-    const nativeProps = convertNativeProps(this.props);
+    // Should we show barcode finder, use in child or use default
+    var childs = null;
+    var barcodeFinderPercentageSize = [0, 0];
+    if (this.props.barcodeFinderVisible) {
+      // we need % size of viewFinder
+      barcodeFinderPercentageSize = [(this.props.barcodeFinderWidth / width), (this.props.barcodeFinderHeight / height)]
+      childs = this._child();
+    }
+    const nativeProps = convertNativeProps({ ...this.props, barcodeFinderPercentageSize });
 
     if (this.state.isAuthorized) {
-      return <RCTCamera ref={this._setReference} {...nativeProps} />;
+      return (
+        <RCTCamera ref={this._setReference} {...nativeProps} >
+          {childs}
+        </RCTCamera>
+      );
     } else if (!this.state.isAuthorizationChecked) {
       return this.props.pendingAuthorizationView;
     } else {
