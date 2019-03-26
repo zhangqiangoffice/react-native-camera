@@ -23,6 +23,9 @@ public class RCTCamera {
     private static final Resolution RESOLUTION_720P = new Resolution(1280, 720);
     private static final Resolution RESOLUTION_1080P = new Resolution(1920, 1080);
     private boolean _barcodeScannerEnabled = false;
+    private boolean _barcodeFinderVisible = false;
+    private double _barcodeFinderWidthScale = 0;
+    private double _barcodeFinderHeightScale = 0;
     private List<String> _barCodeTypes = null;
     private int _orientation = -1;
     private int _actualDeviceOrientation = 0;
@@ -187,6 +190,30 @@ public class RCTCamera {
 
     public List<String> getBarCodeTypes() {
         return _barCodeTypes;
+    }
+
+    public void setBarcodeFinderVisible(boolean barcodeFinderVisible) {
+        _barcodeFinderVisible = barcodeFinderVisible;
+    }
+
+    public boolean barcodeFinderVisible() {
+        return _barcodeFinderVisible;
+    }
+
+    public void setBarcodeFinderWidthScale(double barcodeFinderWidthScale) {
+        _barcodeFinderWidthScale = barcodeFinderWidthScale;
+    }
+
+    public double barcodeFinderWidthScale() {
+        return _barcodeFinderWidthScale;
+    }
+
+    public void setBarcodeFinderHeightScale(double barcodeFinderHeightScale) {
+        _barcodeFinderHeightScale = barcodeFinderHeightScale;
+    }
+
+    public double barcodeFinderHeightScale() {
+        return _barcodeFinderHeightScale;
     }
 
     public void setBarCodeTypes(List<String> barCodeTypes) {

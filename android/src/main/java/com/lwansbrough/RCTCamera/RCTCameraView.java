@@ -136,6 +136,15 @@ public class RCTCameraView extends ViewGroup {
         RCTCamera.getInstance().setBarCodeTypes(types);
     }
 
+    public void setBarcodeFinderVisible(boolean barcodeFinderVisible) {
+        RCTCamera.getInstance().setBarcodeFinderVisible(barcodeFinderVisible);
+    }
+
+    public void setBarcodeFinderPercentageSize(double w, double h) {
+        RCTCamera.getInstance().setBarcodeFinderWidthScale(w);
+        RCTCamera.getInstance().setBarcodeFinderHeightScale(h);
+    }
+
     public void setClearWindowBackground(boolean clearWindowBackground) {
         this._clearWindowBackground = clearWindowBackground;
         if (this._viewFinder != null) {

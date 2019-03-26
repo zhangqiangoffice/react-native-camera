@@ -45,6 +45,10 @@ public class MutableImage {
         return this.currentRepresentation.getHeight();
     }
 
+    public Bitmap getCurrentRepresentation(){
+        return this.currentRepresentation;
+    }
+
     public void mirrorImage() throws ImageMutationFailedException {
         Matrix m = new Matrix();
 
@@ -105,7 +109,7 @@ public class MutableImage {
     }
 
     //see http://www.impulseadventure.com/photo/exif-orientation.html
-    private void rotate(int exifOrientation) throws ImageMutationFailedException {
+    public void rotate(int exifOrientation) throws ImageMutationFailedException {
         final Matrix bitmapMatrix = new Matrix();
         switch (exifOrientation) {
             case 1:

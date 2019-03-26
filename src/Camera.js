@@ -131,6 +131,7 @@ export default class Camera extends Component {
     barcodeFinderVisible: PropTypes.bool,
     barcodeFinderWidth: PropTypes.number,
     barcodeFinderHeight: PropTypes.number,
+    barcodeFinderPercentageSize: PropTypes.array,
   };
 
   static defaultProps = {
