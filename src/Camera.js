@@ -129,8 +129,6 @@ export default class Camera extends Component {
     notAuthorizedView: PropTypes.element,
     pendingAuthorizationView: PropTypes.element,
     barcodeFinderVisible: PropTypes.bool,
-    barcodeFinderWidth: PropTypes.number,
-    barcodeFinderHeight: PropTypes.number,
     barcodeFinderPercentageSize: PropTypes.array,
   };
 
@@ -157,7 +155,7 @@ export default class Camera extends Component {
     barcodeFinderVisible: false,
     barcodeFinderWidth: 200,
     barcodeFinderHeight: 200,
-    barcodeFinderComponent: <BarcodeFinderMask />,
+    barcodeFinderMaskComponent: <BarcodeFinderMask />,
     notAuthorizedView: (
       <View style={styles.authorizationContainer}>
         <Text style={styles.notAuthorizedText}>Camera not authorized</Text>
@@ -287,7 +285,7 @@ export default class Camera extends Component {
       width: this.props.barcodeFinderWidth,
       height: this.props.barcodeFinderHeight
     }
-    return React.cloneElement(this.props.barcodeFinderComponent, props);
+    return React.cloneElement(this.props.barcodeFinderMaskComponent, props);
   }
 
   render() {
