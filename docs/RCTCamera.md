@@ -167,6 +167,25 @@ The barcode type is provided in the `data` object.
 An array of barcode types to search for. Defaults to all types listed above. No effect if `onBarCodeRead` is undefined.
 Example: `<Camera barCodeTypes={[Camera.constants.BarCodeType.qr]} />`
 
+#### `barcodeFinderVisible`
+
+Displays an rectangle over the camera to show the area of barcode scanning. If this is used the actual area that is scanned in cropped to the rectangle. This can significantly increase the performance.
+
+Adjust size:
+`barcodeFinderWidth`,
+`barcodeFinderHeight`
+
+
+##### Make a custom barcode finder mask
+
+```javascript
+<Camera barcodeFinderMaskComponent={<CustomBarcodeFinder />} />
+```
+
+1. "barcodeFinderWidth" will be past to the barcodeFinderMaskComponent as "width" through props automatically
+2. "barcodeFinderHeight" will be past to the barcodeFinderMaskComponent as "height" through props automatically
+3. make sure the barcode finder rectangle is in the center of the image
+
 #### `flashMode`
 
 Values:
