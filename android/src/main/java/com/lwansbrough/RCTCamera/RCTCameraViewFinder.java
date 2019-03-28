@@ -253,39 +253,39 @@ class RCTCameraViewFinder extends TextureView implements TextureView.SurfaceText
      * Additionally supports [codabar, maxicode, rss14, rssexpanded, upca, upceanextension]
      */
     private BarcodeFormat parseBarCodeString(String c) {
-        if ("aztec".equals(c)) {
+        if ("AZTEC".equals(c)) {
             return BarcodeFormat.AZTEC;
-        } else if ("ean13".equals(c)) {
-            return BarcodeFormat.EAN_13;
-        } else if ("ean8".equals(c)) {
-            return BarcodeFormat.EAN_8;
-        } else if ("qr".equals(c)) {
-            return BarcodeFormat.QR_CODE;
-        } else if ("pdf417".equals(c)) {
-            return BarcodeFormat.PDF_417;
-        } else if ("upce".equals(c)) {
-            return BarcodeFormat.UPC_E;
-        } else if ("datamatrix".equals(c)) {
-            return BarcodeFormat.DATA_MATRIX;
-        } else if ("code39".equals(c)) {
-            return BarcodeFormat.CODE_39;
-        } else if ("code93".equals(c)) {
-            return BarcodeFormat.CODE_93;
-        } else if ("interleaved2of5".equals(c)) {
-            return BarcodeFormat.ITF;
-        } else if ("codabar".equals(c)) {
+        } else if ("CODABAR".equals(c)) {
             return BarcodeFormat.CODABAR;
-        } else if ("code128".equals(c)) {
+        } else if ("CODE_128".equals(c)) {
             return BarcodeFormat.CODE_128;
-        } else if ("maxicode".equals(c)) {
+        } else if ("CODE_93".equals(c)) {
+            return BarcodeFormat.CODE_93;
+        } else if ("CODE_39".equals(c)) {
+            return BarcodeFormat.CODE_39;
+        } else if ("DATA_MATRIX".equals(c)) {
+            return BarcodeFormat.DATA_MATRIX;
+        } else if ("EAN_13".equals(c)) {
+            return BarcodeFormat.EAN_13;
+        } else if ("EAN_8".equals(c)) {
+            return BarcodeFormat.EAN_8;
+        } else if ("ITF".equals(c)) {
+            return BarcodeFormat.ITF;
+        } else if ("MAXICODE".equals(c)) {
             return BarcodeFormat.MAXICODE;
-        } else if ("rss14".equals(c)) {
+        } else if ("PDF_417".equals(c)) {
+            return BarcodeFormat.PDF_417;
+        } else if ("QR_CODE".equals(c)) {
+            return BarcodeFormat.QR_CODE;
+        } else if ("RSS_14".equals(c)) {
             return BarcodeFormat.RSS_14;
-        } else if ("rssexpanded".equals(c)) {
+        } else if ("RSS_EXPANDED".equals(c)) {
             return BarcodeFormat.RSS_EXPANDED;
-        } else if ("upca".equals(c)) {
+        } else if ("UPC_A".equals(c)) {
             return BarcodeFormat.UPC_A;
-        } else if ("upceanextension".equals(c)) {
+        } else if ("UPC_E".equals(c)) {
+            return BarcodeFormat.UPC_E;
+        } else if ("UPC_EAN_EXTENSION".equals(c)) {
             return BarcodeFormat.UPC_EAN_EXTENSION;
         } else {
             android.util.Log.v("RCTCamera", "Unsupported code.. [" + c + "]");
